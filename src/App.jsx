@@ -7,15 +7,14 @@ import Project from "./component/Project";
 import Contact from "./component/Contact";
 
 function App() {
-  
-
   return (
-    <div id="main" className="sm:overflow-hidden">
+    <div className="bg-slate-50 min-h-screen">
       <Header />
       <Main />
       <Skills />
       <Project />
       <Contact />
+      <Footer />
     </div>
   );
 }
