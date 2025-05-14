@@ -49,7 +49,7 @@ const Contact = () => {
     <div className="maindiv space-y-8">
         <div className=" flex  items-center gap-6 border-1 p-6 rounded-2xl bg-white drop-shadow-xl hover:scale-105">
         <div className="border-1 rounded-full  box-border size-16 flex items-center justify-center ">
-       <i class="fa-solid fa-address-card text-2xl text-blue-600"></i>
+       <i className="fa-solid fa-address-card text-2xl text-blue-600"></i>
         </div>
         <div>
           <h1 className="text-lg font-medium">CONTACT</h1>
@@ -62,7 +62,7 @@ const Contact = () => {
         <div className="maindiv flex  items-center gap-6 border-1 p-6 rounded-2xl bg-white drop-shadow-xl hover:scale-105">
         <div className="border-1 rounded-full  box-border size-16 flex items-center justify-center ">
        
-       <i class="fa-solid fa-hashtag text-2xl text-blue-600"></i>
+       <i className="fa-solid fa-hashtag text-2xl text-blue-600"></i>
         </div>
         <div>
           <h1 className="text-lg font-medium">SOCIAL</h1>
@@ -76,7 +76,7 @@ const Contact = () => {
         <div className="maindiv flex  items-center gap-6 border-1 p-6 rounded-2xl bg-white drop-shadow-xl hover:scale-105">
         <div className="border-1 rounded-full  box-border size-16 flex items-center justify-center ">
       
-       <i class="fa-solid fa-location-dot text-2xl text-blue-600"></i>
+       <i className="fa-solid fa-location-dot text-2xl text-blue-600"></i>
         </div>
         <div>
           <h1 className="text-lg font-medium">ADDRESS</h1>
