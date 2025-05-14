@@ -2,125 +2,133 @@ import React from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-const Contact = () => {
-  useGSAP(function () {
-    gsap.to(".box", {
-      scrollTrigger: {
-        trigger: ".box",
-        start: "top center",
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      duration: 2,
-      delay: 0.3,
-    });
-  });
-  useGSAP(function () {
-    gsap.to(".box1", {
-      scrollTrigger: {
-        trigger: ".box1",
-        start: "top center",
 
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      duration: 2,
-      delay: 0.3,
-    });
-  });
-  useGSAP(function () {
-    gsap.to(".box2", {
-      scrollTrigger: {
-        trigger: ".box2",
-        start: "top center",
-
-        toggleActions: "play none none none",
-      },
-      opacity: 1,
-      duration: 2,
-      delay: 0.3,
-    });
-  });
+const ContactCard = ({ icon, title, items }) => {
   return (
-    <section className=" p-4 min-md:px-[2rem] min-lg:p-6 space-y-10 min-lg:px-[9rem] min-lg:pt-[10rem] min-lg:pb-[10rem]">
-      <h1 className=" text-3xl box min-md:text-4xl min-md:pb-13 opacity-0 font-bold min-lg:text-8xl min-lg:pb-36 text-center tracking-widest">
-        Contact
-      </h1>
-    <div className="maindiv space-y-8">
-        <div className=" flex  items-center gap-6 border-1 p-6 rounded-2xl bg-white drop-shadow-xl hover:scale-105">
-        <div className="border-1 rounded-full  box-border size-16 flex items-center justify-center ">
-       <i className="fa-solid fa-address-card text-2xl text-blue-600"></i>
+    <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+      <div className="flex items-start gap-4">
+        <div className="flex-shrink-0">
+          <div className="w-12 h-12 flex items-center justify-center bg-violet-100 rounded-lg">
+            <i className={`${icon} text-xl text-violet-600`}></i>
+          </div>
         </div>
         <div>
-          <h1 className="text-lg font-medium">CONTACT</h1>
-       <div >
-           <h2>dineshdakhare22@gmail.com</h2>
-          <h2>(+91)-7020901905</h2>
-       </div>
-        </div>
-      </div>
-        <div className="maindiv flex  items-center gap-6 border-1 p-6 rounded-2xl bg-white drop-shadow-xl hover:scale-105">
-        <div className="border-1 rounded-full  box-border size-16 flex items-center justify-center ">
-       
-       <i className="fa-solid fa-hashtag text-2xl text-blue-600"></i>
-        </div>
-        <div>
-          <h1 className="text-lg font-medium">SOCIAL</h1>
-       <div >
-           <h2>Linkdin</h2>
-           <h2>Intagram</h2>
-      
-       </div>
-        </div>
-      </div>
-        <div className="maindiv flex  items-center gap-6 border-1 p-6 rounded-2xl bg-white drop-shadow-xl hover:scale-105">
-        <div className="border-1 rounded-full  box-border size-16 flex items-center justify-center ">
-      
-       <i className="fa-solid fa-location-dot text-2xl text-blue-600"></i>
-        </div>
-        <div>
-          <h1 className="text-lg font-medium">ADDRESS</h1>
-       <div >
-           <h2>442902</h2>
-             <h3>Bhadrawati, maharashtra</h3>
-             
-       </div>
+          <h3 className="text-lg font-semibold text-slate-800 mb-2">{title}</h3>
+          <div className="space-y-1">
+            {items.map((item, index) => (
+              <p key={index} className="text-slate-600">{item}</p>
+            ))}
+          </div>
         </div>
       </div>
     </div>
-   
-      <form
-        action=""
-        className="space-y-16 min-lg:pt-[5rem] min-lg:w-[65%] min-lg:space-y-[5rem] min-lg:pb-[5rem] "
-      >
-        <h1 className="font-mono text-3xl min-lg:text-5xl min-lg:pb-10">
-          leave a message
-        </h1>
+  );
+};
 
-        <div className="space-y-6 min-lg:flex gap-10 min-lg:pb-20">
-          <input
-            type="text"
-            className="w-full border-b-1 border-black py-2 focus:outline-0 text-xl"
-            placeholder="NAME"
-          />
-          <input
-            type="email"
-            className="w-full border-b-1 py-2 focus:outline-0  text-xl"
-            placeholder="EMAIL"
-          />
+const Contact = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    gsap.from(".contact-card", {
+      scrollTrigger: {
+        trigger: ".contact-section",
+        start: "top center",
+        toggleActions: "play none none none",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.2,
+    });
+
+    gsap.from(".contact-form", {
+      scrollTrigger: {
+        trigger: ".contact-form",
+        start: "top center",
+        toggleActions: "play none none none",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.4,
+    });
+  });
+
+  const contactInfo = [
+    {
+      icon: "fa-solid fa-address-card",
+      title: "CONTACT",
+      items: ["dineshdakhare22@gmail.com", "(+91)-7020901905"]
+    },
+    {
+      icon: "fa-solid fa-hashtag",
+      title: "SOCIAL",
+      items: ["LinkedIn", "Instagram"]
+    },
+    {
+      icon: "fa-solid fa-location-dot",
+      title: "ADDRESS",
+      items: ["442902", "Bhadrawati, Maharashtra"]
+    }
+  ];
+
+  return (
+    <section className="contact-section py-20 px-4 bg-gradient-to-b from-white to-slate-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-800 mb-4">
+            Get in Touch
+          </h2>
+          <p className="text-slate-600 max-w-2xl mx-auto">
+            Have a project in mind or want to collaborate? Feel free to reach out through any of these channels.
+          </p>
         </div>
 
-        <textarea
-          name=""
-          id=""
-          placeholder="YOUR MESSAGE"
-          className="w-full border-b-1 focus:outline-0 resize-none  text-xl "
-          rows={6}
-        ></textarea>
-        <button className="hover:scale-105  px-10 py-2 rounded-md border-3 min-lg:text-2xl min-lg:font-semibold min-lg:px-14">
-          send
-        </button>
-      </form>
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {contactInfo.map((info, index) => (
+            <div key={index} className="contact-card">
+              <ContactCard {...info} />
+            </div>
+          ))}
+        </div>
+
+        <div className="contact-form max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+          <h3 className="text-2xl font-semibold text-slate-800 mb-8">
+            Send me a message
+          </h3>
+          <form className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:border-violet-600 transition-colors duration-200"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:border-violet-600 transition-colors duration-200"
+                />
+              </div>
+            </div>
+            <div>
+              <textarea
+                placeholder="Your Message"
+                rows="6"
+                className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:border-violet-600 transition-colors duration-200 resize-none"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full md:w-auto bg-violet-600 text-white px-8 py-3 rounded-lg hover:bg-violet-700 transition-colors duration-200 font-medium"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
   );
 };
